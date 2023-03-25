@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(adwaita))
  '(package-selected-packages
-   '(no-littering elfeed evil-collection magit use-package chess evil nix-mode))
+   '(smartparens no-littering elfeed evil-collection magit use-package chess evil nix-mode))
  '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -35,6 +35,7 @@
 ;; for install on another machine with same config
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
 (require 'use-package)
         
 (setq use-package-always-ensure t)
@@ -71,6 +72,8 @@
   :commands (nix-repl))
 
 (use-package magit)
+(use-package smartparens
+  :hook (prog-mode . smartparens-mode))
 
 (use-package elfeed
   :config
@@ -78,6 +81,7 @@
         '(("https://news.ycombinator.com/rss" hacker_news)
           ("https://www.reddit.com/r/linux_gaming.rss" reddit_linux_gaming)
           ("https://www.reddit.com/r/linux.rss" reddit_linux)
+          ("https://www.reddit.com/r/emacs.rss" reddit_emacs)
           ("https://boilingsteam.com/?feed=rss2" pc_linux_gaming)
           ("https://www.phoronix.com/rss.php" phoronix)
           ("https://grapheneos.org/releases.atom" grapheneos_feed)))
