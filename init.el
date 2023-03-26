@@ -72,8 +72,8 @@
   :commands (nix-repl))
 
 (use-package magit)
-(use-package smartparens
-  :hook (prog-mode . smartparens-mode))
+;;(use-package smartparens
+;;  :hook (prog-mode . smartparens-mode))
 
 (use-package elfeed
   :config
@@ -84,7 +84,8 @@
           ("https://www.reddit.com/r/emacs.rss" reddit_emacs)
           ("https://boilingsteam.com/?feed=rss2" pc_linux_gaming)
           ("https://www.phoronix.com/rss.php" phoronix)
-          ("https://grapheneos.org/releases.atom" grapheneos_feed)))
+          ("https://grapheneos.org/releases.atom" grapheneos_feed)
+          ("https://b-movies.ru/?feed=rss2" b-movies)))
   (add-hook 'window-configuration-change-hook 'update-rss))
   
 ;; Dummy rss updater
