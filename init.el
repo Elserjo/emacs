@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(adwaita))
  '(package-selected-packages
-   '(smartparens no-littering elfeed evil-collection magit use-package chess evil nix-mode))
+   '(no-littering elfeed evil-collection magit use-package chess evil nix-mode))
  '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -37,13 +37,13 @@
   (package-install 'use-package))
 
 (require 'use-package)
-        
 (setq use-package-always-ensure t)
-(setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
-      
-;; this package prevents writting emacs packages data to home directory
-(use-package no-littering)
 
+;; this package prevents writting emacs packages data to home directory
+;;(use-package no-littering)
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
+
+(use-package 'no-littering)
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -82,9 +82,12 @@
           ("https://www.reddit.com/r/linux_gaming.rss" reddit_linux_gaming)
           ("https://www.reddit.com/r/linux.rss" reddit_linux)
           ("https://www.reddit.com/r/emacs.rss" reddit_emacs)
+          ("https://www.reddit.com/r/oneplus.rss" reddit_oneplus)
           ("https://boilingsteam.com/?feed=rss2" pc_linux_gaming)
           ("https://www.phoronix.com/rss.php" phoronix)
           ("https://grapheneos.org/releases.atom" grapheneos_feed)
+          ("https://github.com/arkenfox/user.js/releases.atom" github_arkenfox)
+          ("https://www.allmusic.com/rss" allmusic_rss)
           ("https://b-movies.ru/?feed=rss2" b-movies)))
   (add-hook 'window-configuration-change-hook 'update-rss))
   
