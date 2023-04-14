@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(adwaita))
  '(package-selected-packages
-   '(no-littering elfeed evil-collection magit use-package chess evil nix-mode))
+   '(dired-transient-rsync no-littering elfeed evil-collection magit use-package chess evil nix-mode))
  '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -18,6 +18,8 @@
 
 (setq-default indent-tabs-mode nil)
 (setq tab-stop-list (number-sequence 4 120 4))
+;; Now dired will ask before creating missing directory
+(setq dired-create-destination-dirs "ask")
 
 ;; get current linux distro. printf removes new line symbol from command output
 (setq distro (shell-command-to-string
@@ -43,7 +45,8 @@
 ;;(use-package no-littering)
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
 
-(use-package 'no-littering)
+(use-package no-littering)
+
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -72,8 +75,6 @@
   :commands (nix-repl))
 
 (use-package magit)
-;;(use-package smartparens
-;;  :hook (prog-mode . smartparens-mode))
 
 (use-package elfeed
   :config
