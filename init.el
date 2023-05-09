@@ -14,13 +14,14 @@
  ;; If there is more than one, they won't work right.
  )
 (add-to-list 'default-frame-alist
-	     '(font . "Source Code Pro-14"))
+             '(font . "Source Code Pro-14"))
 
 (setq-default indent-tabs-mode nil)
 (setq tab-stop-list (number-sequence 4 120 4))
 ;; Now dired will ask before creating missing directory
 (setq dired-create-destination-dirs "ask")
 
+;; Terminal Modes https://systemcrafters.cc/emacs-from-scratch/learn-to-love-the-terminal-modes/
 ;; get current linux distro. printf removes new line symbol from command output
 (setq distro (shell-command-to-string
               "printf %s $(grep -woP 'ID=\\K\\w+' /etc/os-release)"))
@@ -91,7 +92,7 @@
           ("https://www.allmusic.com/rss" allmusic_rss)
           ("https://b-movies.ru/?feed=rss2" b-movies)))
   (add-hook 'window-configuration-change-hook 'update-rss))
-  
+
 ;; Dummy rss updater
 (defun update-rss ()
 "Auto update rss in elfeed buffer"
@@ -110,3 +111,13 @@
       (progn
         (elfeed-update)
         (message "Updated: %d" time-diff)))))
+
+;; I can get name of hook by using "describe-variable"
+(add-hook 'sh-mode-hook 'shell-settings-mode)
+
+;; Delete whitespaces when save any file
+;;(add-hook 'before-save-hook 'on-save)
+
+(defun shell-settings-mode ()
+  ;;Clean whitespace on shell-mode startup
+  (whitespace-cleanup))
