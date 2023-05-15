@@ -78,7 +78,8 @@
   :ensure nix-mode
   :commands (nix-repl))
 
-(use-package magit)
+(use-package magit
+  :ensure t)
 
 (use-package elfeed
   :config
@@ -122,5 +123,6 @@
 ;;(add-hook 'before-save-hook 'on-save)
 
 (defun shell-settings-mode ()
-  ;;Clean whitespace on shell-mode startup
-  (whitespace-cleanup))
+  ;; Clean whitespace on shell-mode startup
+  (whitespace-cleanup)
+  (setq display-line-numbers t))
