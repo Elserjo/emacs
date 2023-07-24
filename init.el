@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(adwaita))
  '(package-selected-packages
-   '(dired-transient-rsync no-littering elfeed evil-collection magit use-package chess evil nix-mode))
+   '(evil-commentary no-littering elfeed evil-collection magit use-package evil nix-mode))
  '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -61,6 +61,13 @@
   :ensure t
   :config
   (evil-collection-init))
+
+;; Enable evil-commentary
+;; https://github.com/linktohack/evil-commentary
+(use-package evil-commentary
+  :after evil
+  :config
+  (evil-commentary-mode))
 
 (evil-set-initial-state 'shell-mode 'emacs)
 
