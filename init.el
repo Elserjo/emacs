@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(adwaita))
  '(package-selected-packages
-   '(evil-commentary no-littering elfeed evil-collection magit use-package evil nix-mode))
+   '(whitespace-cleanup-mode dashboard evil-commentary no-littering elfeed evil-collection magit use-package evil nix-mode))
  '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -53,6 +53,7 @@
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
+  (setq evil-respect-visual-line-mode t)
   :config
   (evil-mode 1))
 
@@ -138,11 +139,14 @@
 
 ;; I can get name of hook by using "describe-variable"
 (add-hook 'sh-mode-hook 'shell-settings-mode)
+;; Use smart whitespace cleanup mode. This mode works only when
+;; current buffer was initialy without whitespaces
+(add-hook 'sh-mode-hook 'whitespace-cleanup-mode)
 
 ;; Delete whitespaces when save any file
 ;;(add-hook 'before-save-hook 'on-save)
 
 (defun shell-settings-mode ()
   ;; Clean whitespace on shell-mode startup
-  (whitespace-cleanup)
+  ;; (whitespace-cleanup)
   (setq display-line-numbers t))
