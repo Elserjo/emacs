@@ -104,6 +104,19 @@
           ("https://b-movies.ru/?feed=rss2" b-movies)))
   (add-hook 'window-configuration-change-hook 'update-rss))
 
+;; Alternative startup menu
+(use-package dashboard
+  :ensure t
+  :init
+  (setq dashboard-center-content t
+        dashboard-items
+        '((recents . 5)
+          (bookmarks . 5)))
+  :config
+  (dashboard-setup-startup-hook))
+
+(use-package whitespace-cleanup-mode)
+
 ;; Dummy rss updater
 (defun update-rss ()
 "Auto update rss in elfeed buffer"
